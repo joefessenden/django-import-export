@@ -104,3 +104,8 @@ class EBook(Book):
     """Book proxy model to have a separate admin url access and name"""
     class Meta:
         proxy = True
+
+class Reader(models.Model):
+    reader = models.OneToOneField(Book, on_delete=models.CASCADE, primary_key=True,)
+    reader_name = models.CharField('Reader Name',max_length=100,blank=True, null=True)
+    #id = models.IntegerField(blank=True, null=True)   # This can be uncommented to see workaround in bug report.
