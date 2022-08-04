@@ -64,22 +64,22 @@ class ReaderResource(ModelResource):
         exclude = ('id',)
         import_id_fields = ['reader']
         fields = (
-            'reader'
+            'reader',
             'reader_name',
         )
 
 # Decorator Approach
-class ReaderImportExport(ImportExportModelAdmin):
-    resource_class: ReaderResource
-
-@admin.register(Reader)
-class ReservationAdmin(ReaderImportExport):
-    fields = ["reader","reader_name",]
-    #def sales_rep_full_name(self, obj):
-    #    return obj.sales_rep.get_full_name()
+#class ReaderImportExport(ImportExportModelAdmin):
+#    resource_class: ReaderResource
+#
+#@admin.register(Reader)
+#class ReservationAdmin(ReaderImportExport):
+#    fields = ["reader","reader_name",]
+#    #def sales_rep_full_name(self, obj):
+#    #    return obj.sales_rep.get_full_name()
 
 # Mixin Approach
-#class ReaderAdmin(ImportExportMixin, admin.ModelAdmin):
-#    resource_class = ReaderResource
-#
-#admin.site.register(Reader, ReaderAdmin)
+class ReaderAdmin(ImportExportMixin, admin.ModelAdmin):
+    resource_class = ReaderResource
+
+admin.site.register(Reader, ReaderAdmin)
